@@ -337,7 +337,6 @@ async function iniciarBot() {
     
     const sock = makeWASocket({
       logger: pino({ level: 'warn' }),
-      printQRInTerminal: true,
       auth: state,
       browser: ['Bot Financeiro', 'Chrome', '1.0'],
       connectTimeoutMs: 60000,
@@ -351,7 +350,8 @@ async function iniciarBot() {
       const { connection, lastDisconnect, qr } = update;
       
       if (qr) {
-        logger.info('📱 QR Code gerado! Escaneie com seu WhatsApp.');
+        logger.info('📱 QR Code gerado! Escaneie com seu WhatsApp:');
+        qrcode.generate(qr, { small: true });
       }
       
       if (connection === 'close') {
@@ -571,6 +571,10 @@ process.on('SIGTERM', () => {
 
 // ============================================
 // INICIALIZAÇÃO
+// ============================================
+
+iniciarBot();
+ALIZAÇÃO
 // ============================================
 
 iniciarBot();

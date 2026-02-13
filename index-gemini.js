@@ -19,6 +19,7 @@ const {
   downloadMediaMessage 
 } = require('@whiskeysockets/baileys');
 const { Boom } = require('@hapi/boom');
+const qrcode = require('qrcode-terminal');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
 const path = require('path');
@@ -294,7 +295,6 @@ async function iniciarBot() {
     
     const sock = makeWASocket({
       logger: pino({ level: 'warn' }),
-      printQRInTerminal: true,
       auth: state,
       browser: ['Bot Financeiro', 'Chrome', '1.0'],
       connectTimeoutMs: 60000,
@@ -308,7 +308,8 @@ async function iniciarBot() {
       const { connection, lastDisconnect, qr } = update;
       
       if (qr) {
-        logger.info('📱 QR Code gerado! Escaneie com seu WhatsApp.');
+        logger.info('📱 QR Code gerado! Escaneie com seu WhatsApp:');
+        qrcode.generate(qr, { small: true });
       }
       
       if (connection === 'close') {
