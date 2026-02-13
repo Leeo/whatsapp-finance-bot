@@ -1,0 +1,41 @@
+{
+  "name": "whatsapp-finance-bot",
+  "version": "1.0.0",
+  "description": "Bot de WhatsApp para Gestão Financeira com processamento de imagens via IA",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "logs": "pm2 logs whatsapp-finance-bot",
+    "monitor": "pm2 monit",
+    "stop": "pm2 stop whatsapp-finance-bot",
+    "restart": "pm2 restart whatsapp-finance-bot"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "finance",
+    "gestao-financeira",
+    "openai",
+    "gpt-4o",
+    "baileys",
+    "nodejs"
+  ],
+  "author": "Desenvolvedor Full Stack",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "dotenv": "^16.4.5",
+    "openai": "^4.52.0",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
